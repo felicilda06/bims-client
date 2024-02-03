@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div>Hello World</div>
+  <div>EZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ</div>
 </template>
 
 
