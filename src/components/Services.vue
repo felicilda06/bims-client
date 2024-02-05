@@ -25,9 +25,10 @@ import { services } from '../utils'
 
 span {
   text-align: center;
-  font-size: 28px;
+  font-size: 26px;
   margin-left: 10px;
   font-weight: 600;
+  color: #0e79b2;
 }
 
 p {
