@@ -11,8 +11,6 @@ const menu = [{
   path: '/sign-up'
 }]
 
-
-
 </script>
 
 <template>
@@ -25,7 +23,10 @@ const menu = [{
           <p>
             A Barangay Information Management System (BIMS) is a computer-based system designed to organize, manage, and
             streamline information related to a barangay, which is the smallest administrative division in the
-            Philippines. The term "barangay" is roughly equivalent to a neighborhood or village in other countries.The Barangay Information Management System typically includes various modules or features to facilitate the efficient management of barangay-related data. The Barangay Information Management System typically includes various modules or features to facilitate the efficient management of barangay-related data. </p>
+            Philippines. The term "barangay" is roughly equivalent to a neighborhood or village in other countries.The
+            Barangay Information Management System typically includes various modules or features to facilitate the
+            efficient management of barangay-related data. The Barangay Information Management System typically includes
+            various modules or features to facilitate the efficient management of barangay-related data. </p>
           <a href="#services">Services</a>
         </div>
         <div class="img-container">
@@ -124,4 +125,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-}</style>
+}
+
+</style>
