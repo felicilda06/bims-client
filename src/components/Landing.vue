@@ -1,10 +1,11 @@
 <script setup>
 import NavBar from './Navbar.vue'
 import Services from './Services.vue';
+
 const menu = [{
   id: 'login',
   label: "Log in",
-  path: '/login'
+  path: '/sign-in'
 }, {
   id: 'sign-up',
   label: "Sign up",
@@ -15,8 +16,11 @@ const menu = [{
 
 <template>
   <div id="main-container">
-    <section id="home">
+    <header>
       <NavBar :menu="menu" />
+    </header>
+    <div class="section-container">
+      <section id="home">
       <div id="hero">
         <div class="text">
           <h1>Barangay Information Management System</h1>
@@ -41,20 +45,24 @@ const menu = [{
         <Services />
       </div>
     </section>
+    </div>
   </div>
 </template>
 
 <style scoped>
-#main-container {
+header{
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+#section-container {
   width: 100%;
   overflow-y: auto;
   overflow: hidden;
 }
-
 #services {
   padding: 80px 60px;
 }
-
 .services-container {
   display: flex;
   flex-direction: column;
@@ -70,7 +78,7 @@ h3 {
 
 #hero {
   display: flex;
-  padding: 75px 60px;
+  padding: 100px 60px 45px;
   gap: 25px;
 }
 
@@ -119,12 +127,36 @@ a {
   color: #fbfef9;
   background-color: #0e79b2;
   padding: 8px 15px;
-  border-radius: 3px;
+  border-radius: 15px;
   transition: .2s ease;
 }
 
 a:hover {
   text-decoration: underline;
 }
-
+@media screen and (min-width: 1024px){
+  .img-container{
+    width: 700px;
+    height: 380px;
+  }
+  img{
+    width: 100%;
+  }
+  h1{
+    font-size: 3rem;
+  }
+  h3{
+    font-size: 1.3rem;
+  }
+  span{
+    font-size: 16px;
+  }
+  #services {
+    padding: 100px 125px 80px;
+  }
+  a {
+  font-size: 16px;
+  padding: 6px 15px;
+}
+}
 </style>

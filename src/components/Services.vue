@@ -4,7 +4,7 @@ import { services } from '../utils'
 <template>
   <div v-for="service in services" :key="service.title">
     <div class="services-wrapper">
-      <div id="icon-title-wrapper">
+      <div class="icon-title-wrapper">
         <i :class="service.icon"></i>
         <span>{{ service.title }}</span>
       </div>
@@ -14,15 +14,9 @@ import { services } from '../utils'
 </template>
 
 <style scoped>
-.icon-title-wrapper {
+.icon-title-wrapper{
   display: flex;
-  align-items: center;
 }
-
-.service_wrapper {
-  max-width: 400px;
-}
-
 span {
   text-align: center;
   font-size: 26px;
@@ -41,5 +35,17 @@ p {
 i {
   color: #0e79b2;
   font-size: 35px;
+}
+
+@media screen and (min-width: 1024px){
+  i {
+    font-size: 28px;
+  }
+  span {
+    font-size: 20px;
+  }
+  p {
+  font-size: 15px;
+  }
 }
 </style>

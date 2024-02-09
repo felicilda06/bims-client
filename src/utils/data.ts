@@ -24,3 +24,26 @@ export const services = [
     content: 'The system facilitates the speedy processing of data which help employees increase their productivity and allows other important tasks to be devoted to rather than spending their time in manual manipulations of record that is time consuming.'
   }
 ]
+
+export const barangays = [
+  {
+    label: "Banday",
+    value: "Banday",
+  },
+  {
+    label: "Bogo",
+    value: "Bogo",
+  },
+  {
+    label: "San Agustin",
+    value: "San Agustin",
+  },
+  {
+    label: "Cambite",
+    value: "Cambite",
+  },
+  {
+    label: "Iniguihan",
+    value: "Iniguihan",
+  },
+];
