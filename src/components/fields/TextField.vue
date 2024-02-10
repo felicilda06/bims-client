@@ -1,11 +1,12 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUpdated } from 'vue';
 
   const props = defineProps({
     id: String,
     label: String,
     value: String,
     icon: String,
+    required: Boolean,
     placeholder: String,
     autoFocus: Boolean,
     name: String,
@@ -19,7 +20,7 @@ import { ref, onMounted } from 'vue';
 
   onMounted(()=> {
      inputRef.value = props.value
-  }, props.value)
+  })
 
   const onInput = evt => {
     const value = {
@@ -40,7 +41,7 @@ import { ref, onMounted } from 'vue';
 
 <template>
     <div class="input-container" :class="focusRef ? 'focused': ''">
-        <label :class="focusRef ? 'focused': ''">{{ props.label }}</label>
+        <label :class="focusRef ? 'focused': ''">{{ props.label }} {{ props.required ? '*' : '' }}</label>
         <input :autocomplete="props.autoComplete" :name="props.name" :placeholder="focusRef ? props.placeholder: ''" :autofocus="props.autoFocus"  :id="props.id" :type="props.type" v-model="inputRef" @input="onInput" @focus="onFocus" @blur="onBlur"> 
     </div>
 </template>

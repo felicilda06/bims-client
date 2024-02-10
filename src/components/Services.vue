@@ -1,5 +1,5 @@
 <script setup>
-import { services } from '../utils'
+import { services } from '../data'
 </script>
 <template>
   <div v-for="service in services" :key="service.title">

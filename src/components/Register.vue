@@ -1,16 +1,46 @@
 <script setup>
  import Hero from '../components/Hero.vue'
  import { TextField, Select } from './fields'
+ import { capitalizeLetter } from '../utils'
+ import { barangays } from '../data'
  import { Button } from './controls'
- import { barangays } from '../utils'
+ import { ref } from 'vue';
+ import axios from 'axios';
+
+ const dataRef = ref({})
+
+ const registerUser = async ()=> {
+    const { firstname, middlename, lastname, ...rest } = dataRef.value
+    const fullname = `${firstname} ${middlename || ''} ${lastname}`
+    const data = {
+      ...rest,
+      fullname
+    }
+    axios({
+      url: 'http://localhost:4000/register',
+      method: 'POST',
+      data
+    }).then(res=>{
+      console.log(res.data);
+    }).catch(err=> {
+      console.log(err);
+    })
+ }
 
  const onSubmit = e =>{
   e.preventDefault();
+  registerUser();
+
  }
 
  const onChange = evt => {
     const { id, value } = evt
-    console.log(id, value);
+    let tempVal = ''
+    const notCapitalize = ['barangay', 'email', 'password']
+    if(notCapitalize.includes(id)) tempVal = value
+    else tempVal = capitalizeLetter(value)
+    
+    dataRef.value = { ...dataRef.value, [id]: tempVal }
  }
 
 </script>
@@ -22,12 +52,12 @@
         <h1>Sign Up</h1>
         <form>
            <div class="form-inputs">
-                <TextField autoComplete="off" @onChange="onChange" id="firstname" placeholder="Enter your first name" autoFocus label="First Name" type="text"/>
+                <TextField required autoComplete="off" @onChange="onChange" id="firstname" placeholder="Enter your first name" autoFocus label="First Name" type="text"/>
                 <TextField autoComplete="off" @onChange="onChange" id="middlename" placeholder="Enter your middle name"  label="Middle Name" type="text"/>
-                <TextField autoComplete="off" @onChange="onChange" id="lastname" placeholder="Enter your last name"  label="Last Name" type="text"/>
+                <TextField required autoComplete="off" @onChange="onChange" id="lastname" placeholder="Enter your last name"  label="Last Name" type="text"/>
                 <Select @onChange="onChange" label="Barangay" :options="barangays" id="barangay"/>
-                <TextField autoComplete="off" @onChange="onChange" id="email" placeholder="Enter your email"  label="Username" type="email"/>
-                <TextField autoComplete="off" @onChange="onChange" id="password" placeholder="Enter your password" label="Password" type="password"/>
+                <TextField required autoComplete="off" @onChange="onChange" id="email" placeholder="Enter your email"  label="Username" type="email"/>
+                <TextField required autoComplete="off" @onChange="onChange" id="password" placeholder="Enter your password" label="Password" type="password"/>
            </div>
           <div class="action-buttons">
             <Button label="Submit" className="btn-submit" @onClick="onSubmit"/>
